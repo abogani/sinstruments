@@ -430,6 +430,7 @@ def create_device(device_info, registry):
     else:
         if package_name is None:
             package_name = "sinstruments.simulators." + module_name
+        sys.path.append(module_name)
         __import__(package_name)
         package = sys.modules[package_name]
         klass = getattr(package, class_name)
